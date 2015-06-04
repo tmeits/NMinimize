@@ -16,9 +16,11 @@ def initializePopulation(NP, lower, upper):
     Initialize population and some arrays
     """
     lenLower = len(lower)
-    popLower = np.repeat(np.array(lower), NP).reshape(NP, lenLower)
+    popLower = np.tile(np.array(lower), NP).reshape(NP, lenLower)
     # http://docs.scipy.org/doc/numpy/reference/generated/numpy.random.uniform.html
+    # http://docs.scipy.org/doc/numpy/reference/generated/numpy.tile.html
     popRunif = np.random.uniform(low=0.0, high=1.0, size=NP*lenLower).reshape(NP, lenLower)
-    popUpper = np.repeat(np.array(upper) - np.array(lower), NP).reshape(NP,lenLower)
+    popUpper = np.tile(np.array(upper) - np.array(lower), NP).reshape(NP,lenLower)
     pop = popLower + popRunif * popUpper
     return pop
+
